@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Login
+      {% endblock %}
+    </title>
+    <style></style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css') }}" />
+
+    {% block css %}
+
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="bg-image"></div>
+    <div class="regwrapper" id="bg-text">
+      <div class="loginheading">
+        <p>
+          <b>GROCERY STORE</b>
+        </p>
+        <p>
+          <b>Administration Staff Login</b>
+        </p>
+      </div>
+      <div class="form">
+        <form action="" method="post">
+          <label for="uname" style="font-weight: bold; color: rgb(75, 84, 216);">Username</label><br /><input class="text" type="text" name="username" required minlength="5" class="logindecor" placeholder="UserName" />
+
+          <label for="pass" style="font-weight: bold; color: rgb(65, 77, 240);">Password</label> <br /><input class="text" type="password" name="password" required minlength="6" class="logindecor" placeholder="Password" />
+          <br /> <input class="bt" type="submit" value="Login" />
+        </form>
+        <strong style="color: green;">Don't have Account? Click <a href="{{ url_for('registration') }}">here</a> to Register.</strong>
+      </div>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for msg in messages %}
+            <p class="messages">{{ msg }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+  </body>
+</html>
